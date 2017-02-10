@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1000" />
+    <link rel="manifest" href="manifest.json">
+    <title>Calorie Tracker</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="CalorieTracker" class="page">
+      <div>
+        <ul class="tabHeaders">
+          <li v-on:click="tab = 1" v-bind:class="{ active: tab === 1 }"><a>Diary</a></li>
+          <li v-on:click="tab = 2" v-bind:class="{ active: tab === 2 }"><a>My Foods</a></li>
+          <li v-on:click="tab = 3" v-bind:class="{ active: tab === 3 }"><a>Settings</a></li>
+        </ul>
+        <div class="tabPane" v-show="tab === 1">
+          <div class="marginBottom">
+            <date-picker v-model="selectedDateStamp"></date-picker>
+          </div>
+          <eaten-foods-list v-bind:foods="foods.eaten" v-bind:selected-date-stamp="selectedDateStamp" v-on:food-remove="removeEatenFood"></eaten-foods-list>
+        </div>
+        <div class="tabPane" v-show="tab === 2">
+          <saved-foods-list v-bind:saved-foods="foods.saved" v-on:food-selected="addEatenFood" v-on:food-remove="removeSavedFood" v-on:food-sort="sortSavedFoods"></saved-foods-list>
+          <div class="marginTop plainContainer">
+            <button v-on:click="addSavedFood"><i class="fa fa-plus"></i> Add</button>
+          </div>
+        </div>
+        <div class="tabPane" v-show="tab === 3">
+          <table class="plainList">
+            <thead>
+              <tr>
+                <th>
+                  Setting
+                </th>
+                <th>
+                  Value
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Calorie Limit
+                </td>
+                <td>
+                  <input type="number" v-model="foods.settings.calorieLimit" class="short"/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://use.fontawesome.com/37738db87b.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/then-request/2.1.1/request.js"></script>
+    
+    <script src="DatePlugin.js"></script>
+    <script src="MiscPlugin.js"></script>
+    
+    <script src="SavedFoodsListComponent.js"></script>
+    <script src="DatePickerComponent.js"></script>
+    <script src="EatenFoodsListComponent.js"></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
