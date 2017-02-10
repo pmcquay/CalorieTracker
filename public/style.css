@@ -1,0 +1,158 @@
+body {
+  background-color: #4281A4;
+  font-size: 30px;
+  font-family: verdana;
+}
+
+.page {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.marginRight {
+  margin-right: 5px;
+}
+
+.marginLeft {
+  margin-left: 5px;
+}
+
+.marginBottom {
+  margin-bottom: 5px;
+}
+
+.marginTop {
+  margin-top: 5px;
+}
+
+.tabHeaders {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tabHeaders>li {
+  display: inline-block;
+  margin: 0px;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #809096;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.tabHeaders>li.active {
+  background-color: #9CAFB7;
+}
+
+.tabPane {
+  background-color: #9CAFB7;
+  padding: 10px;
+  border-radius: 0px 10px 10px 10px;
+}
+
+button {
+  background-color: #87A878;
+  border: none;
+  margin: none;
+  color: white;
+  padding: 3px 7px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: inherit;
+  white-space: nowrap;
+}
+
+input {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  margin: none;
+}
+
+input[type='number'] {
+  padding: 0px 7px;
+  border-radius: 10px;
+}
+
+input[type='text'] {
+  padding: 0px 7px;
+  border-radius: 10px;
+}
+
+table, tbody, tr, td, thead, th {
+  font-size: inherit;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.plainContainer {
+  background-color: #EAD2AC;
+  border-radius: 10px;
+  border-spacing: 5px;
+  padding: 5px;
+}
+
+.plainList {
+  padding: 0;
+  margin: 0;
+  background-color: #EAD2AC;
+  border-radius: 10px;
+  border-spacing: 5px;
+  border-collapse: separate;
+  width: 100%;
+}
+
+.plainList td {
+  background-color: #E6B89C;
+  padding: 3px 7px;
+  border-radius: 10px;
+}
+
+.plainList th {
+  background-color: #E6B89C;
+  padding: 3px 7px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.short {
+  width: 120px;
+}
+
+.medium {
+  width: 250px;
+}
+
+.long {
+  width: 400px;
+}
+
+.extraLong {
+  width: 500px;
+}
+
+.fill {
+  width: 100%;
+}
+
+.positionRelative {
+  position: relative;
+}
+
+.positionAbsoluteBelowButton {
+  position: absolute;
+  left: 0;
+  top: 42px;
+  width: 400px;
+  background-color: #D5BF9D;
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.inlineBlock {
+  display: inline-block;
+}

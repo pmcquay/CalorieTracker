@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <div id="JsonEditor">
+      <input type="text" v-model="id" /><br>
+      <button v-on:click="getData">Load</button><button v-on:click="saveData">Save</button><br>
+      <textarea v-model="json" style="width:100%; height:700px;"></textarea>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/1.0.3/vue-resource.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/then-request/2.1.1/request.js"></script>
+    
+    <script type="text/javascript">
+      var CalorieTracker = new Vue({
+        el: "#JsonEditor",
+        data: {
+          id: "",
+          json: ""
+        },
+        methods: {
+          getData: function() {
+            var that = this;
+            
+            request('GET', "https://slimy-carpenter.gomix.me/api/data/" + this.id).done(function (res) {
+              that.json = JSON.stringify(JSON.parse(res.body), null, 4);
+            });
+          },
+          saveData: function() {
+            request("POST", "https://slimy-carpenter.gomix.me/api/data", { json: JSON.parse(this.json) }).done(function (res) {
+              if (res.statusCode >= 300) {
+                alert(res.statusCode + ": " + res.body);
+              }
+            });
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

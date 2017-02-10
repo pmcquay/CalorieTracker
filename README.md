@@ -1,2 +1,1 @@
-# CalorieTracker
-An extremely simple calorie tracker.
+Things and stuff.
