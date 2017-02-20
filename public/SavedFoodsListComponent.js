@@ -1,7 +1,13 @@
 Vue.component("saved-foods-list", {
   props: ["savedFoods"],
+  data: function() {
+    return { searchString: "" };
+  },
   template:
     "<div>" +
+      "<div class='plainContainer marginBottom'>" +
+        "Search <input type='text' v-model='searchString'>" +
+      "</div>" +
       "<table class='plainList'>" +
         "<thead>" +
           "<tr>" +
@@ -11,7 +17,7 @@ Vue.component("saved-foods-list", {
           "</tr>" +
         "</thead>" +
         "<tbody>" +
-          "<tr v-for='(food, index) in savedFoods'>" +
+          "<tr v-for='(food, index) in filteredFoodsList'>" +
             "<td><input type='text' v-model='food.name' class='extraLong'/></td>" +
             "<td><input type='number' v-model='food.calories' class='short'/></td>" +
             "<td><button v-on:click='selectFoodToAdd(food)' class='marginRight'><i class='fa fa-cutlery'></i> Eat</button>" +
@@ -29,6 +35,19 @@ Vue.component("saved-foods-list", {
     },
     triggerSort: function() {
       this.$emit("food-sort");
+    }
+  },
+  computed: {
+    filteredFoodsList: function() {
+      var savedSearchString = this.searchString.toLowerCase();
+      
+      if (savedSearchString === "") {
+        return this.savedFoods;
+      } else {
+        return this.savedFoods.filter(function(food) {
+          return food.name.toLowerCase().indexOf(savedSearchString) >= 0;
+        });
+      }
     }
   }
 });
